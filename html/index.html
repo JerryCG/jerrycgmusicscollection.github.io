@@ -1,0 +1,285 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <style>
+        table{
+            overflow-y:scroll;
+            height:200px;
+            max-width: 500px;
+            display: block;
+            }
+        th {
+            background: gold;
+            position: sticky;
+            top: 0;
+            display: flexbox;
+            width: 50%;
+        }
+        td {
+            min-width: 200;
+        }
+    </style>
+    <script src="../js/musics.js"></script>
+    <script src="../js/genres.js"></script>
+    <script>
+        let musics = getMusics();
+        let genres = getGenres();
+
+        function getMusicName(musicArray, id) {
+            for (let i=0; i<musicArray.length; i++) {
+                if (musicArray[i].id == id) return musicArray[i].name;
+            }
+            return undefined;
+        }
+
+        function getArtistName(musicArray, id) {
+            for (let i=0; i<musicArray.length; i++) {
+                if (musicArray[i].id == id) return musicArray[i].artist;
+            }
+            return undefined;
+        } 
+
+        function getMusicSrc(musicArray, id) {
+            for (let i=0; i<musicArray.length; i++) {
+                if (musicArray[i].id == id) return musicArray[i].src;
+            }
+            return undefined;
+        } 
+    </script>
+</head>
+<body>
+    <div id="genreSelection">
+        <label>Choose your ideal genre:</label>
+        <select name="genre" id="dropDownBox" onchange="infoSet();">
+        </select>
+        <script>
+            for(let i=0; i<genres.length; i++){
+                var optionGenres = document.createElement("option");
+                var textGenres = document.createTextNode(genres[i].genreName + " (" + genres[i].musics.length + ")");
+                optionGenres.appendChild(textGenres);
+                optionGenres.setAttribute("value", genres[i].genreName);
+                document.getElementById("dropDownBox").appendChild(optionGenres);
+            }
+        </script>
+        <br><br>
+        <div id="selectedByGenre">
+        </div>
+        <script>
+            function changeMusicURL(id){
+                musicPlayer.setAttribute("src", getMusicSrc(musics, id));
+                document.getElementById("musicplaying").innerHTML = getMusicName(musics, id);
+                document.getElementById("musicplaying").name = id;
+                document.getElementById("artistplaying").innerHTML = getArtistName(musics, id);
+            }
+    
+            function infoSet(){
+                document.getElementById("selectedByGenre").innerHTML = "";
+                var table = document.createElement("table");
+                var hr = document.createElement("tr");
+                var musicName = document.createElement("th");
+                musicName.innerHTML = "Music Name";
+                var artistName = document.createElement("th");
+                artistName.innerHTML = "Artist Name";
+                hr.appendChild(musicName);
+                hr.appendChild(artistName);
+                hr.align = "left";
+                table.appendChild(hr);
+    
+                for(let i=0; i<genres.length; i++){
+                    if (document.getElementById("dropDownBox").value == genres[i].genreName){
+                        for (let j=0; j<genres[i].musics.length; j++){
+                            var dr = document.createElement("tr");
+                            var music = document.createElement("td");
+                            music.innerHTML = getMusicName(musics, genres[i].musics[j].id);
+                            music.value = getMusicSrc(musics, genres[i].musics[j].id);
+                            music.onclick = function() {changeMusicURL(genres[i].musics[j].id);};
+                            var artist = document.createElement("td");
+                            artist.innerHTML = getArtistName(musics, genres[i].musics[j].id);
+                            dr.appendChild(music);
+                            dr.appendChild(artist);
+    
+                            table.appendChild(dr);
+                        }
+                        break;
+                    }
+                }
+                document.getElementById("selectedByGenre").appendChild(table);
+            }
+                
+            infoSet();
+        </script>
+    </div>
+
+    <div class="container-out">
+        <div class="container-in">
+        <div class="search-container">
+            <div class="search-engine">
+            <p class="search-title">Search Song or Artist Name</p>
+            <input
+                type="input"
+                id="search-input"
+                autocomplete="off"
+                placeholder="Hit Enter to Search"
+            />
+            </div>
+            <div id="search-results"></div>
+            <div id="search-data"></div>
+        </div>
+        </div>
+    </div>
+    <script>
+        //shortens document.getEgetElementById
+        function element(id) {
+        return document.getElementById(id);
+        }
+        let allSearchData = ""; //decleared to collect all search names
+
+        //gets each inputs data
+        function getResults() {
+        //gets value of input
+        let search = element("search-input").value;
+        allSearchData = ""; //clears data for each word typed
+
+        hideSearchResults();
+        clearSearchResults();
+        clearSearchData(); //
+        //starts searching
+
+        for (let i = 0; i < musics.length; i++) {
+            //checks for similarities
+            if ((musics[i]['name'] + " " + musics[i]['artist']).toLowerCase().includes(search.toLowerCase()) && search != "" && search != " ") {
+                //populates the suggestion div
+                element("search-results").innerHTML +=
+                    "<div class='search-item' "+
+                    "onclick='displayData(\"" +
+                    musics[i]['name'] +
+                    "\", \"" +
+                    musics[i]['artist'] +
+                    "\", \"" +
+                    (i+1) +
+                    "\")'><p>" +
+                    musics[i]['name'] + " - " + musics[i]['artist'] +
+                    "</p></div>";
+            }
+            if ((musics[i]['name'] + " " + musics[i]['artist']).toLowerCase().includes(search.toLowerCase()) && search != "" && search != " ")
+                //saves all the realated names
+                allSearchData += "<p>" + musics[i]['name'] + " - " + musics[i]['artist'] + "</p>";
+        }
+        displaySearchResults();
+
+        }
+        //displays the suggestion div
+        function displaySearchResults() {
+        element("search-results").style.display = "block";
+        }
+        //clears the suggestion div
+        function clearSearchResults() {
+        element("search-results").innerHTML = "";
+        }
+
+        //hides the suggestion div
+        function hideSearchResults() {
+        element("search-results").style.display = "none";
+        }
+        //displays names when you click a suggestions
+        function displayData(name, artist, id) {
+        element("search-data").innerHTML = "<p>" + name + " - " + artist + "</p>";
+        changeMusicURL(id);
+        hideSearchResults();
+        }
+        //displays all related names to your search when you hit enter
+        function displayAllData(names) {
+        element("search-data").innerHTML = names;
+        hideSearchResults();
+        }
+        //clears names displayed from search result
+        function clearSearchData() {
+        element("search-data").innerHTML = "";
+        }
+        //gets results after each input
+        element("search-input").oninput = function() {
+        getResults();
+        };
+
+        element("search-input").addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            displayAllData(allSearchData);
+        }
+        });
+    </script>
+    <div id="musicPlayer">
+        <h2 id="musicplaying"></h2>
+        <h4 id="artistplaying"></h4>
+    </div>
+    <script>
+        initialRandomID = Math.floor(Math.random() * musics.length) + 1;
+        document.getElementById("musicplaying").innerHTML = getMusicName(musics, initialRandomID);
+        document.getElementById("musicplaying").name = initialRandomID;
+        document.getElementById("artistplaying").innerHTML = getArtistName(musics, initialRandomID);
+
+        var musicPlayer = document.createElement("audio");
+        musicPlayer.controls = true;
+        musicPlayer.autoplay = true;
+        musicPlayer.setAttribute("src", getMusicSrc(musics, initialRandomID));
+        musicPlayer.setAttribute("charset", "UTF-8");
+        musicPlayer.setAttribute("type", "audio/mpeg")
+        var position = document.getElementById("musicPlayer");
+        position.appendChild(musicPlayer);
+
+        musicPlayer.onended = function() {randomPlay();};
+        nextSongButton = document.createElement("button");
+        nextSongButton.setAttribute("type", "button");
+        nextSongButton.setAttribute("onclick", "randomPlay();");
+        nextSongButton.innerHTML = "Next Song";
+        position.appendChild(nextSongButton);
+
+        function randomPlay() {
+            randomID = Math.floor(Math.random() * musics.length) + 1;
+            while (document.getElementById("musicplaying").name == randomID){
+                randomID = Math.floor(Math.random() * musics.length) + 1;
+            }
+            
+            for (let i = 1; i <= musics.length; i++){
+                if (document.getElementById("musicplaying").name == i){
+                    musicPlayer.setAttribute("src", getMusicSrc(musics, randomID));
+                    document.getElementById("musicplaying").innerHTML = getMusicName(musics, randomID);
+                    document.getElementById("musicplaying").name = randomID;
+                    document.getElementById("artistplaying").innerHTML = getArtistName(musics, randomID);
+                    break;
+                }
+            } 
+        } 
+    </script>
+<!--  <div id="count">
+    </div>
+    <script>
+        element = document.getElementById("count");
+        var cnt = [];
+        for (let i = 0; i < musics.length; i++){
+            cnt[i] = 0;
+        }
+        for (genre of genres){
+            for (music of genre.musics){
+                cnt[music.id-1]++;
+            }
+        }
+        for (let i = 0; i < musics.length; i++){
+            if (cnt[i] != 2){
+                var res = document.createElement("p");
+                res.innerHTML = (i+1) + ":" + cnt[i];
+                element.appendChild(res);
+            }
+        }
+    </script>
+-->
+    <footer>
+    </footer>
+    </div>
+</body>
+</html>
