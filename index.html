@@ -35,18 +35,8 @@
             border-color: lightskyblue;
             border-width: 1.5px;
         }
-        #click-to-play-button {
-            border-radius: 50px;
-            background-color: gold;
-            border-color: white;
-            font-family: Goudy Old Style;
-            border-width: 2px;
-            font-weight: bold;
-            width: 50px;
-            height: 50px;
-            font-size: 17;
-        }
-        #replay-button, #next-song-button {
+
+        button {
             border-radius: 50px;
             background-color: gold;
             border-color: white;
@@ -65,11 +55,7 @@
             border-width: 2px;
             width: 150;
         }
-        #play-mode {
-            column-count: 2;
-            column-gap: 20px;
-            max-width: 450;
-        }
+
         #buttons {
             column-count: 2;
             column-gap: 20px;
@@ -228,6 +214,7 @@
                 </script>
             </div>
         </div>
+        <br>
         <div id="click-to-play">
             <button id="click-to-play-button" onclick="clearPlayCnt();changeMusicURL(idSelected[Math.floor(Math.random() * idSelected.length)]); var selectedMusics = []; for (let i=0; i<musics.length; i++){ for (let j=0; j<idSelected.length; j++){if (musics[i].id == idSelected[j]){selectedMusics.push(musics[i])}}}; musicPlayer.onended = function() {randomPlay(selectedMusics);};nextSongButton.onclick = function() {randomPlay(selectedMusics)};changeMode();">Play!</button>
         </div>
