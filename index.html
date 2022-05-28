@@ -23,14 +23,17 @@
     </style>
     <script src="js/musics.js"></script>
     <script src="js/genres.js"></script>
+    <script src="js/artists.js"></script>
     <script>
         let musics = getMusics();
         let genres = getGenres();
+        let artists = getArtists();
         let playCnt = [];
-        
-        function clearPlayCnt(musicArray, id) {
-            for (let i=0; i<musicArray.length; i++) {
-                if (musicArray[i].id == id) return musicArray[i].name;
+        let idSelected = [];
+
+        function clearPlayCnt() {
+            for (let i=0; i<musics.length; i++) {
+                playCnt[i] = 0;
             }
             return undefined;
         }
@@ -61,82 +64,158 @@
                 document.getElementById("musicplaying").innerHTML = getMusicName(musics, id);
                 document.getElementById("musicplaying").name = id;
                 document.getElementById("artistplaying").innerHTML = getArtistName(musics, id);
+                playCnt[id-1]++;
         }
 
-        function randomPlay() {
-            randomID = Math.floor(Math.random() * musics.length) + 1;
-            while (document.getElementById("musicplaying").name == randomID){
-                randomID = Math.floor(Math.random() * musics.length) + 1;
-            }
-            
-            for (let i = 1; i <= musics.length; i++){
-                if (document.getElementById("musicplaying").name == i){
-                    musicPlayer.setAttribute("src", getMusicSrc(musics, randomID));
-                    document.getElementById("musicplaying").innerHTML = getMusicName(musics, randomID);
-                    document.getElementById("musicplaying").name = randomID;
-                    document.getElementById("artistplaying").innerHTML = getArtistName(musics, randomID);
-                    break;
+        function randomPlay(musicArray) {
+            // get all unplayed songs' IDs
+            var unplayedIDs = [];
+            for (music of musicArray){
+                if (playCnt[music.id-1] == 0){
+                    unplayedIDs.push(music.id);
                 }
-            } 
-        } 
+            }
+            // if all played, clear cnt
+            if (unplayedIDs.length == 0){
+                alert('All Played!');
+                clearPlayCnt();
+                for (music of musicArray){
+                    if (playCnt[music.id-1] == 0){
+                        unplayedIDs.push(music.id);
+                    }
+                }
+            }
+            // random play unplayed songs
+            randomIndex = Math.floor(Math.random() * unplayedIDs.length);
+            changeMusicURL(unplayedIDs[randomIndex]);
+        }
+
+        function seqPlay(musicArray) {
+            // get all unplayed songs' IDs
+            var unplayedIDs = [];
+            for (music of musicArray){
+                if (playCnt[music.id-1] == 0){
+                    unplayedIDs.push(music.id);
+                }
+            }
+            // if all played, clear cnt
+            if (unplayedIDs.length == 0){
+                alert('All Played!');
+                clearPlayCnt();
+                for (music of musicArray){
+                    if (playCnt[music.id-1] == 0){
+                        unplayedIDs.push(music.id);
+                    }
+                }
+            }
+            // sequentially play unplayed songs
+            changeMusicURL(unplayedIDs[0]);
+        }
+
+        clearPlayCnt();
+
     </script>
 </head>
 <body>
     <h2 id="title">果子狸の音乐播放器</h2>
-    <div id="genreSelection">
-        <label>Choose your ideal genre:</label>
-        <select name="genre" id="dropDownBox" onchange="infoSet();">
-        </select>
-        <script>
-            for(let i=0; i<genres.length; i++){
-                var optionGenres = document.createElement("option");
-                var textGenres = document.createTextNode(genres[i].genreName + " (" + genres[i].musics.length + ")");
-                optionGenres.appendChild(textGenres);
-                optionGenres.setAttribute("value", genres[i].genreName);
-                document.getElementById("dropDownBox").appendChild(optionGenres);
-            }
-        </script>
-        <br><br>
-        <div id="selectedByGenre">
-        </div>
-        <script>
-            function infoSet(){
-                document.getElementById("selectedByGenre").innerHTML = "";
-                var table = document.createElement("table");
-                var hr = document.createElement("tr");
-                var musicName = document.createElement("th");
-                musicName.innerHTML = "Music Name";
-                var artistName = document.createElement("th");
-                artistName.innerHTML = "Artist Name";
-                hr.appendChild(musicName);
-                hr.appendChild(artistName);
-                hr.align = "left";
-                table.appendChild(hr);
-    
-                for(let i=0; i<genres.length; i++){
-                    if (document.getElementById("dropDownBox").value == genres[i].genreName){
-                        for (let j=0; j<genres[i].musics.length; j++){
-                            var dr = document.createElement("tr");
-                            var music = document.createElement("td");
-                            music.innerHTML = getMusicName(musics, genres[i].musics[j].id);
-                            music.value = getMusicSrc(musics, genres[i].musics[j].id);
-                            music.onclick = function() {changeMusicURL(genres[i].musics[j].id);};
-                            var artist = document.createElement("td");
-                            artist.innerHTML = getArtistName(musics, genres[i].musics[j].id);
-                            dr.appendChild(music);
-                            dr.appendChild(artist);
-    
-                            table.appendChild(dr);
-                        }
-                        break;
+    <div id="play-mode">
+        <div id="selection">
+            <span id="genreSelection">
+                <label>Genre:</label>
+                <select name="dropGenre" id="dropGenre" onchange="infoSet();">
+                </select>
+                <script>
+                    for(let i=0; i<genres.length; i++){
+                        var optionGenres = document.createElement("option");
+                        var textGenres = document.createTextNode(genres[i].genreName + " (" + genres[i].musics.length + ")");
+                        optionGenres.appendChild(textGenres);
+                        optionGenres.setAttribute("value", genres[i].genreName);
+                        document.getElementById("dropGenre").appendChild(optionGenres);
                     }
+                </script>
+            </span>
+            <span id="artistSelection">
+                <label>Artist:</label>
+                <select name="dropArtist" id="dropArtist" onchange="infoSet();">
+                </select>
+                <script>
+                    for(let i=0; i<artists.length; i++){
+                        var optionArtists = document.createElement("option");
+                        var textArtists = document.createTextNode(artists[i].artistName + " (" + artists[i].musics.length + ")");
+                        optionArtists.appendChild(textArtists);
+                        optionArtists.setAttribute("value", artists[i].artistName);
+                        document.getElementById("dropArtist").appendChild(optionArtists);
+                    }
+                </script>
+            </span>
+            <span id="select-to-play">
+                <button onclick="clearPlayCnt();changeMusicURL(idSelected[Math.floor(Math.random() * idSelected.length)]); var selectedMusics = []; for (let i=0; i<musics.length; i++){ for (let j=0; j<idSelected.length; j++){if (musics[i].id == idSelected[j]){selectedMusics.push(musics[i])}}}; musicPlayer.onended = function() {randomPlay(selectedMusics);};nextSongButton.onclick = function() {randomPlay(selectedMusics)};">Go!</button>
+            </span>
+            <div id="selected">
+            </div>
+            <script>
+                function infoSet(){
+                    document.getElementById("selected").innerHTML = "";
+                    var table = document.createElement("table");
+                    var hr = document.createElement("tr");
+                    var musicName = document.createElement("th");
+                    musicName.innerHTML = "Music Name";
+                    var artistName = document.createElement("th");
+                    artistName.innerHTML = "Artist Name";
+                    hr.appendChild(musicName);
+                    hr.appendChild(artistName);
+                    hr.align = "left";
+                    table.appendChild(hr);
+                    
+                    var idByGenre = [];
+                    for (let i=0; i<genres.length; i++){
+                        if (genres[i].genreName == document.getElementById("dropGenre").value){
+                            for (let j=0; j<genres[i].musics.length; j++){
+                                idByGenre.push(genres[i].musics[j].id);
+                            }
+                            break;
+                        }
+                    }
+
+                    var idByArtist = [];
+                    for (let i=0; i<artists.length; i++){
+                        if (artists[i].artistName == document.getElementById("dropArtist").value){
+                            for (let j=0; j<artists[i].musics.length; j++){
+                                idByArtist.push(artists[i].musics[j].id);
+                            }
+                            break;
+                        }
+                    }
+
+                    idSelected = [];
+                    for (a of idByGenre){
+                        for (b of idByArtist){
+                            if (a==b){
+                                idSelected.push(a)
+                            }
+                        }
+                    }
+
+                    for (let i=0; i<idSelected.length; i++){
+                        var dr = document.createElement("tr");
+                        var music = document.createElement("td");
+                        music.innerHTML = getMusicName(musics, idSelected[i]);
+                        music.value = getMusicSrc(musics, idSelected[i]);
+                        music.onclick = function() {changeMusicURL(idSelected[i]);};
+                        var artist = document.createElement("td");
+                        artist.innerHTML = getArtistName(musics, idSelected[i]);
+                        dr.appendChild(music);
+                        dr.appendChild(artist);
+                        table.appendChild(dr);
+                        
+                    }
+                    document.getElementById("selected").appendChild(table);
                 }
-                document.getElementById("selectedByGenre").appendChild(table);
-            }
-                
-            infoSet();
-        </script>
+                infoSet();
+            </script>
+        </div>
     </div>
+
 
     <div class="container-out">
         <div class="container-in">
@@ -187,7 +266,7 @@
 
             }
             if ((musics[i]['name'] + " " + musics[i]['artist']).toLowerCase().includes(search.toLowerCase()) && search != "" && search != " ")
-                //saves all the realated names
+                //saves all the related names
                 allSearchData += "<p>" + musics[i]['name'] + " - " + musics[i]['artist'] + "</p>";
         }
         displaySearchResults();
@@ -241,24 +320,20 @@
         <h4 id="artistplaying"></h4>
     </div>
     <script>
-        initialRandomID = Math.floor(Math.random() * musics.length) + 1;
-        document.getElementById("musicplaying").innerHTML = getMusicName(musics, initialRandomID);
-        document.getElementById("musicplaying").name = initialRandomID;
-        document.getElementById("artistplaying").innerHTML = getArtistName(musics, initialRandomID);
-
         var musicPlayer = document.createElement("audio");
         musicPlayer.controls = true;
         musicPlayer.autoplay = true;
-        musicPlayer.setAttribute("src", getMusicSrc(musics, initialRandomID));
+        initialRandomID = Math.floor(Math.random() * musics.length) + 1;
+        changeMusicURL(initialRandomID);
         musicPlayer.setAttribute("charset", "UTF-8");
         musicPlayer.setAttribute("type", "audio/mpeg")
         var position = document.getElementById("musicPlayer");
         position.appendChild(musicPlayer);
 
-        musicPlayer.onended = function() {randomPlay();};
-        nextSongButton = document.createElement("button");
+        musicPlayer.onended = function() {randomPlay(musics);};
+        var nextSongButton = document.createElement("button");
         nextSongButton.setAttribute("type", "button");
-        nextSongButton.setAttribute("onclick", "randomPlay();");
+        nextSongButton.setAttribute("onclick", "randomPlay(musics);");
         nextSongButton.innerHTML = "Next Song";
         position.appendChild(nextSongButton);
 

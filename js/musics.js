@@ -215,7 +215,7 @@ function getMusics() {
             genre:"Korean Pop",
             src:"music/wohuibayiqiedoujiaogeini_jangsaiksohyang.mp3",
             name:"나 그대에게 모두 드리리 我会把一切都交给你",
-            artist:"Jang Sa Ik & SoHyang"
+            artist:"Jang Sa Ik & Sohyang"
         },
         {
             id:32,
@@ -516,7 +516,7 @@ function getMusics() {
             genre:"Japanese Pop",
             src:"music/zaihui_lisauru.mp3",
             name:"再会 SAIKAI",
-            artist:"LiSA Uru"
+            artist:"LiSA & Uru"
         },
         {
             id:75,

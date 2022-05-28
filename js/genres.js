@@ -202,7 +202,7 @@ function getGenres() {
             ]
         },
         {
-            genreName:"Eletronic",
+            genreName:"Electronic",
             musics:[
                 {id:19},{id:27},{id:50},{id:53},{id:56},{id:116},{id:120},
                 {id:123},{id:132},{id:133},{id:142},{id:143},{id:146},{id:147},
