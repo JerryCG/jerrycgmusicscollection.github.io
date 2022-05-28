@@ -47,9 +47,34 @@
             }
             return undefined;
         } 
+
+        function changeMusicURL(id){
+                musicPlayer.setAttribute("src", getMusicSrc(musics, id));
+                document.getElementById("musicplaying").innerHTML = getMusicName(musics, id);
+                document.getElementById("musicplaying").name = id;
+                document.getElementById("artistplaying").innerHTML = getArtistName(musics, id);
+        }
+
+        function randomPlay() {
+            randomID = Math.floor(Math.random() * musics.length) + 1;
+            while (document.getElementById("musicplaying").name == randomID){
+                randomID = Math.floor(Math.random() * musics.length) + 1;
+            }
+            
+            for (let i = 1; i <= musics.length; i++){
+                if (document.getElementById("musicplaying").name == i){
+                    musicPlayer.setAttribute("src", getMusicSrc(musics, randomID));
+                    document.getElementById("musicplaying").innerHTML = getMusicName(musics, randomID);
+                    document.getElementById("musicplaying").name = randomID;
+                    document.getElementById("artistplaying").innerHTML = getArtistName(musics, randomID);
+                    break;
+                }
+            } 
+        } 
     </script>
 </head>
 <body>
+    <h2 id="title">果子狸の音乐播放器</h2>
     <div id="genreSelection">
         <label>Choose your ideal genre:</label>
         <select name="genre" id="dropDownBox" onchange="infoSet();">
@@ -67,13 +92,6 @@
         <div id="selectedByGenre">
         </div>
         <script>
-            function changeMusicURL(id){
-                musicPlayer.setAttribute("src", getMusicSrc(musics, id));
-                document.getElementById("musicplaying").innerHTML = getMusicName(musics, id);
-                document.getElementById("musicplaying").name = id;
-                document.getElementById("artistplaying").innerHTML = getArtistName(musics, id);
-            }
-    
             function infoSet(){
                 document.getElementById("selectedByGenre").innerHTML = "";
                 var table = document.createElement("table");
@@ -236,22 +254,6 @@
         nextSongButton.innerHTML = "Next Song";
         position.appendChild(nextSongButton);
 
-        function randomPlay() {
-            randomID = Math.floor(Math.random() * musics.length) + 1;
-            while (document.getElementById("musicplaying").name == randomID){
-                randomID = Math.floor(Math.random() * musics.length) + 1;
-            }
-            
-            for (let i = 1; i <= musics.length; i++){
-                if (document.getElementById("musicplaying").name == i){
-                    musicPlayer.setAttribute("src", getMusicSrc(musics, randomID));
-                    document.getElementById("musicplaying").innerHTML = getMusicName(musics, randomID);
-                    document.getElementById("musicplaying").name = randomID;
-                    document.getElementById("artistplaying").innerHTML = getArtistName(musics, randomID);
-                    break;
-                }
-            } 
-        } 
     </script>
 <!--  <div id="count">
     </div>
