@@ -2,8 +2,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
+    <title>果子狸のMusic Player</title>
     <style>
+        body {
+            font-family: Goudy Old Style;
+            color: aliceblue;
+            background-color: black;
+            line-height: 22px;
+        }
+        #logo{
+            width: 120;
+        }
         table{
             overflow-y:scroll;
             height:200px;
@@ -16,10 +25,60 @@
             top: 0;
             display: flexbox;
             width: 50%;
+            color: black;
         }
         td {
-            min-width: 150;
+            max-width: 250;
         }
+        hr {
+            border-style: dashed;
+            border-color: lightskyblue;
+            border-width: 1.5px;
+        }
+        #click-to-play-button {
+            border-radius: 50px;
+            background-color: gold;
+            border-color: white;
+            font-family: Goudy Old Style;
+            border-width: 2px;
+            font-weight: bold;
+            width: 50px;
+            height: 50px;
+            font-size: 17;
+        }
+        #replay-button, #next-song-button {
+            border-radius: 50px;
+            background-color: gold;
+            border-color: white;
+            font-family: Goudy Old Style;
+            border-width: 2px;
+            font-weight: bold;
+            width: 75px;
+            height: 45px;
+            font-size: 18;
+        }
+        select, input {
+            border-radius: 50px;
+            border-color: gold;
+            font-family: Goudy Old Style;
+            font-weight: bold;
+            border-width: 2px;
+            width: 150;
+        }
+        #play-mode {
+            column-count: 2;
+            column-gap: 20px;
+            max-width: 450;
+        }
+        #buttons {
+            column-count: 2;
+            column-gap: 20px;
+            max-width: 150;
+        }
+        #title, #search-title{
+            color: gold;
+        }
+
     </style>
     <script src="js/musics.js"></script>
     <script src="js/genres.js"></script>
@@ -112,15 +171,35 @@
             changeMusicURL(unplayedIDs[0]);
         }
 
+        function changeMode(){
+            if (document.getElementById("dropGenre").value == "All" && document.getElementById("dropArtist").value == "All"){
+                document.getElementById("current-play-mode").innerHTML = "Current Mode: " + "All " + "Songs" + ", " + "Random Playing";
+            }
+            else if (document.getElementById("dropGenre").value == "All") {
+                document.getElementById("current-play-mode").innerHTML = "Current Mode: " + document.getElementById("dropArtist").value + "'s Songs" + ", " + "Random Playing";
+            }
+            else if (document.getElementById("dropArtist").value == "All") {
+                document.getElementById("current-play-mode").innerHTML = "Current Mode: " + document.getElementById("dropGenre").value + " Songs" + ", " + "Random Playing";
+            }
+            else {
+                document.getElementById("current-play-mode").innerHTML = "Current Mode: " + document.getElementById("dropArtist").value + "'s " + document.getElementById("dropGenre").value + " Songs" + ", " + "Random Playing";
+            }
+        }
+
         clearPlayCnt();
 
     </script>
 </head>
 <body>
-    <h2 id="title">果子狸の音乐播放器</h2>
+    <img src="logo-web-removebg.png" alt="果子狸の音乐播放器Logo" title="果子狸の音乐播放器Logo" id="logo">
+    <header id="header">
+        <h1 id="title">果子狸のMusic Player</h1>
+    </header>
+    <h3 id="current-play-mode"></h3>
+    <h3>Select & Play:</h3>
     <div id="play-mode">
         <div id="selection">
-            <span id="genreSelection">
+            <div id="genreSelection">
                 <label>Genre:</label>
                 <select name="dropGenre" id="dropGenre" onchange="infoSet();">
                 </select>
@@ -133,9 +212,9 @@
                         document.getElementById("dropGenre").appendChild(optionGenres);
                     }
                 </script>
-            </span>
-            <span id="artistSelection">
-                <label>Artist:</label>
+            </div>
+            <div id="artistSelection">
+                <label>Artist:&#160</label>
                 <select name="dropArtist" id="dropArtist" onchange="infoSet();">
                 </select>
                 <script>
@@ -147,87 +226,91 @@
                         document.getElementById("dropArtist").appendChild(optionArtists);
                     }
                 </script>
-            </span>
-            <span id="select-to-play">
-                <button onclick="clearPlayCnt();changeMusicURL(idSelected[Math.floor(Math.random() * idSelected.length)]); var selectedMusics = []; for (let i=0; i<musics.length; i++){ for (let j=0; j<idSelected.length; j++){if (musics[i].id == idSelected[j]){selectedMusics.push(musics[i])}}}; musicPlayer.onended = function() {randomPlay(selectedMusics);};nextSongButton.onclick = function() {randomPlay(selectedMusics)};">Go!</button>
-            </span>
-            <div id="selected">
             </div>
-            <script>
-                function infoSet(){
-                    document.getElementById("selected").innerHTML = "";
-                    var table = document.createElement("table");
-                    var hr = document.createElement("tr");
-                    var musicName = document.createElement("th");
-                    musicName.innerHTML = "Music Name";
-                    var artistName = document.createElement("th");
-                    artistName.innerHTML = "Artist Name";
-                    hr.appendChild(musicName);
-                    hr.appendChild(artistName);
-                    hr.align = "left";
-                    table.appendChild(hr);
-                    
-                    var idByGenre = [];
-                    for (let i=0; i<genres.length; i++){
-                        if (genres[i].genreName == document.getElementById("dropGenre").value){
-                            for (let j=0; j<genres[i].musics.length; j++){
-                                idByGenre.push(genres[i].musics[j].id);
-                            }
-                            break;
-                        }
-                    }
-
-                    var idByArtist = [];
-                    for (let i=0; i<artists.length; i++){
-                        if (artists[i].artistName == document.getElementById("dropArtist").value){
-                            for (let j=0; j<artists[i].musics.length; j++){
-                                idByArtist.push(artists[i].musics[j].id);
-                            }
-                            break;
-                        }
-                    }
-
-                    idSelected = [];
-                    for (a of idByGenre){
-                        for (b of idByArtist){
-                            if (a==b){
-                                idSelected.push(a)
-                            }
-                        }
-                    }
-
-                    for (let i=0; i<idSelected.length; i++){
-                        var dr = document.createElement("tr");
-                        var music = document.createElement("td");
-                        music.innerHTML = getMusicName(musics, idSelected[i]);
-                        music.value = getMusicSrc(musics, idSelected[i]);
-                        music.onclick = function() {changeMusicURL(idSelected[i]);};
-                        var artist = document.createElement("td");
-                        artist.innerHTML = getArtistName(musics, idSelected[i]);
-                        dr.appendChild(music);
-                        dr.appendChild(artist);
-                        table.appendChild(dr);
-                        
-                    }
-                    document.getElementById("selected").appendChild(table);
-                }
-                infoSet();
-            </script>
+        </div>
+        <div id="click-to-play">
+            <button id="click-to-play-button" onclick="clearPlayCnt();changeMusicURL(idSelected[Math.floor(Math.random() * idSelected.length)]); var selectedMusics = []; for (let i=0; i<musics.length; i++){ for (let j=0; j<idSelected.length; j++){if (musics[i].id == idSelected[j]){selectedMusics.push(musics[i])}}}; musicPlayer.onended = function() {randomPlay(selectedMusics);};nextSongButton.onclick = function() {randomPlay(selectedMusics)};changeMode();">Play!</button>
         </div>
     </div>
+    <br>
+    <div id="selected">
+    </div>
+    <script>
+        function infoSet(){
+            document.getElementById("selected").innerHTML = "";
+            var table = document.createElement("table");
+            var hr = document.createElement("tr");
+            var musicName = document.createElement("th");
+            musicName.innerHTML = "Music Name";
+            var artistName = document.createElement("th");
+            artistName.innerHTML = "Artist Name";
+            hr.appendChild(musicName);
+            hr.appendChild(artistName);
+            hr.align = "left";
+            table.appendChild(hr);
+            
+            var idByGenre = [];
+            for (let i=0; i<genres.length; i++){
+                if (genres[i].genreName == document.getElementById("dropGenre").value){
+                    for (let j=0; j<genres[i].musics.length; j++){
+                        idByGenre.push(genres[i].musics[j].id);
+                    }
+                    break;
+                }
+            }
 
+            var idByArtist = [];
+            for (let i=0; i<artists.length; i++){
+                if (artists[i].artistName == document.getElementById("dropArtist").value){
+                    for (let j=0; j<artists[i].musics.length; j++){
+                        idByArtist.push(artists[i].musics[j].id);
+                    }
+                    break;
+                }
+            }
+
+            idSelected = [];
+            for (a of idByGenre){
+                for (b of idByArtist){
+                    if (a==b){
+                        idSelected.push(a)
+                    }
+                }
+            }
+
+            for (let i=0; i<idSelected.length; i++){
+                var dr = document.createElement("tr");
+                var music = document.createElement("td");
+                music.innerHTML = getMusicName(musics, idSelected[i]);
+                music.value = getMusicSrc(musics, idSelected[i]);
+                music.onclick = function() {changeMusicURL(idSelected[i]);};
+                var artist = document.createElement("td");
+                artist.innerHTML = getArtistName(musics, idSelected[i]);
+                dr.appendChild(music);
+                dr.appendChild(artist);
+                table.appendChild(dr);
+                
+            }
+            document.getElementById("selected").appendChild(table);
+        }
+        infoSet();
+    </script>
+
+    <br><hr>
 
     <div class="container-out">
         <div class="container-in">
         <div class="search-container">
             <div class="search-engine">
-            <p class="search-title">Search Song or Artist Name</p>
+            <span id="search-title">Search Song/Artist:&#160</span>
+            <span>
             <input
                 type="input"
                 id="search-input"
                 autocomplete="off"
                 placeholder="Hit Enter to Search"
             />
+            </span>
             </div>
             <div id="search-results"></div>
             <div id="search-data"></div>
@@ -315,9 +398,23 @@
         }
         });
     </script>
-    <div id="musicPlayer">
+
+
+    <div id="playingMusic">
         <h2 id="musicplaying"></h2>
         <h4 id="artistplaying"></h4>
+        <div id="musicPlayer">
+            <div id="musicPlayerPosition">
+            </div>
+            <br>
+            <div id="buttons">
+                <div id="replayButtonPosition">
+                </div>
+                <div id="nextSongButtonPosition">
+                </div>
+            </div>
+
+        </div>
     </div>
     <script>
         var musicPlayer = document.createElement("audio");
@@ -326,17 +423,29 @@
         initialRandomID = Math.floor(Math.random() * musics.length) + 1;
         changeMusicURL(initialRandomID);
         musicPlayer.setAttribute("charset", "UTF-8");
-        musicPlayer.setAttribute("type", "audio/mpeg")
-        var position = document.getElementById("musicPlayer");
-        position.appendChild(musicPlayer);
-
+        musicPlayer.setAttribute("type", "audio/mpeg");
+        musicPlayer.setAttribute("controlsList", "nodownload");
+        var musicPlayerPosition = document.getElementById("musicPlayerPosition");
+        musicPlayerPosition.appendChild(musicPlayer);
         musicPlayer.onended = function() {randomPlay(musics);};
+
+        var replayButton = document.createElement("button");
+        replayButton.setAttribute("type", "button");
+        replayButton.onclick = function (){musicPlayer.setAttribute("src", musicPlayer.src);};
+        replayButton.innerHTML = "Replay";
+        replayButton.setAttribute("id", "replay-button");
+        var replayButtonPosition = document.getElementById("replayButtonPosition");
+        replayButtonPosition.appendChild(replayButton);
+
         var nextSongButton = document.createElement("button");
         nextSongButton.setAttribute("type", "button");
         nextSongButton.setAttribute("onclick", "randomPlay(musics);");
-        nextSongButton.innerHTML = "Next Song";
-        position.appendChild(nextSongButton);
+        nextSongButton.innerHTML = "Next";
+        nextSongButton.setAttribute("id", "next-song-button");
+        var nextSongButtonPosition = document.getElementById("nextSongButtonPosition");
+        nextSongButtonPosition.appendChild(nextSongButton);
 
+        document.getElementById("current-play-mode").innerHTML = "Current Mode: " + "All " + "Songs" + ", " + "Random Playing";
     </script>
 <!--  <div id="count">
     </div>
@@ -360,8 +469,13 @@
         }
     </script>
 -->
-    <footer>
-    </footer>
+    <br><br>
+    <div id="footer">
+        <footer>
+            @Copyright of resources belong to corresponding artists - fair use for recording and sharing fine music, please do not download for any business use
+        </footer>
+    </div>
+
     </div>
 </body>
 </html>
