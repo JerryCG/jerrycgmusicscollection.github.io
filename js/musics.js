@@ -767,7 +767,7 @@ function getMusics() {
             id:110,
             genre:"Light Music",
             src:"music/nowyouaregoingtoofar_weipuyouji.mp3",
-            name:"Now Youre Going Too Far",
+            name:"Now You're Going Too Far",
             artist:"梶浦由记"
         },
         {
@@ -788,7 +788,7 @@ function getMusics() {
             id:113,
             genre:"Japanese Pop",
             src:"music/idontsuityou_uru.mp3",
-            name:"I Dont Suit You",
+            name:"I Don't Suit You",
             artist:"Uru"
         },
         {
@@ -1047,7 +1047,7 @@ function getMusics() {
             id:150,
             genre:"Electronic",
             src:"music/wellmeetagain_thefatrat.mp3",
-            name:"Well Meet Again",
+            name:"We'll Meet Again",
             artist:"The Fat Rat"
         },
         {
@@ -1117,7 +1117,7 @@ function getMusics() {
             id:160,
             genre:"Electronic",
             src:"music/wewontbealone_feint.mp3",
-            name:"We Wont Be Alone",
+            name:"We Won't Be Alone",
             artist:"Feint"
         },
         {
@@ -1243,7 +1243,7 @@ function getMusics() {
             id:178,
             genre:"Western Pop",
             src:"music/itsallcomingbacktomenow_celinedion.mp3",
-            name:"Its All Coming Back To Me Now",
+            name:"It's All Coming Back To Me Now",
             artist:"Celine Dion"
         },
         {
@@ -1306,7 +1306,7 @@ function getMusics() {
             id:187,
             genre:"Western Pop",
             src:"music/woaini_larafabian.mp3",
-            name:"Je taime 我爱你",
+            name:"Je t'aime 我爱你",
             artist:"Lara Fabian"
         },
         {
@@ -1432,21 +1432,21 @@ function getMusics() {
             id:205,
             genre:"Western Pop",
             src:"music/nobodysperfect_jessiej.mp3",
-            name:"Nobodys Perfect",
+            name:"Nobody's Perfect",
             artist:"Jessie J"
         },
         {
             id:206,
             genre:"Western Pop",
             src:"music/thatsthewayitis_celinedion.mp3",
-            name:"Thats The Way It Is",
+            name:"That's The Way It Is",
             artist:"Celine Dion"
         },
         {
             id:207,
             genre:"Western Pop",
             src:"music/goodbyesthesaddestword_celinedion.mp3",
-            name:"Goodbyes The Saddest Word",
+            name:"Goodbye's The Saddest Word",
             artist:"Celine Dion"
         },
         {
@@ -1719,7 +1719,7 @@ function getMusics() {
             id:246,
             genre:"Western Pop",
             src:"music/dontcryformeargentina_sarahbrightman.mp3",
-            name:"Dont Cry For Me Argentina",
+            name:"Don't Cry For Me Argentina",
             artist:"Sarah Brightman"
         },
         {
@@ -1733,7 +1733,7 @@ function getMusics() {
             id:248,
             genre:"Western Pop",
             src:"music/sosdunterrienendetresse_dimash.mp3",
-            name:"S.O.S Dun Terrien en detresse",
+            name:"S.O.S D'un Terrien en detresse",
             artist:"迪玛希 Dimash"
         },
         {
@@ -1775,7 +1775,7 @@ function getMusics() {
             id:254,
             genre:"Western Pop",
             src:"music/thereyoullbe_faithhill.mp3",
-            name:"There Youll Be",
+            name:"There You'll Be",
             artist:"Faith Hill"
         },
         {
@@ -1915,7 +1915,7 @@ function getMusics() {
             id:274,
             genre:"Western Pop",
             src:"music/shesgone_steelheart.mp3",
-            name:"Shes Gone",
+            name:"She's Gone",
             artist:"Steel Heart"
         },
         {
@@ -2146,7 +2146,7 @@ function getMusics() {
             id:307,
             genre:"Western Pop",
             src:"music/aintnobody_jessiej.mp3",
-            name:"Ains Nobody",
+            name:"Ain's Nobody",
             artist:"Jessie J"
         },
         {
@@ -2216,7 +2216,7 @@ function getMusics() {
             id:317,
             genre:"Western Pop",
             src:"music/imalive_celinedion.mp3",
-            name:"Im Alive",
+            name:"I'm Alive",
             artist:"Celine Dion"
         },
         {
@@ -3210,7 +3210,7 @@ function getMusics() {
             id:459,
             genre:"Epic",
             src:"music/themefrompiratesofthecaribbeanhesapirate.mp3",
-            name:"Theme From Pirates Of The Caribbean: Hes A Pirate",
+            name:"Theme From Pirates Of The Caribbean: He's A Pirate",
             artist:"unknown"
         },
         {
@@ -4239,14 +4239,14 @@ function getMusics() {
             id:606,
             genre:"Western Pop",
             src:"music/situmaimes_larafabian.mp3",
-            name:"Situmaimes",
+            name:"Situm'aimes",
             artist:"Lara Fabian"
         },
         {
             id:607,
             genre:"Western Pop",
             src:"music/silsuffisaitdaimer_celinedion.mp3",
-            name:"SilSuffisaitDaimer",
+            name:"S'ilSuffisaitD'aimer",
             artist:"Celine Dion"
         },
         {

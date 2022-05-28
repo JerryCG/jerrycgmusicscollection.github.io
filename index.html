@@ -151,17 +151,14 @@
             //checks for similarities
             if ((musics[i]['name'] + " " + musics[i]['artist']).toLowerCase().includes(search.toLowerCase()) && search != "" && search != " ") {
                 //populates the suggestion div
-                element("search-results").innerHTML +=
-                    "<div class='search-item' "+
-                    "onclick='displayData(\"" +
-                    musics[i]['name'] +
-                    "\", \"" +
-                    musics[i]['artist'] +
-                    "\", \"" +
-                    (i+1) +
-                    "\")'><p>" +
-                    musics[i]['name'] + " - " + musics[i]['artist'] +
-                    "</p></div>";
+                var suggestion = document.createElement("div");
+                suggestion.setAttribute("class", "search-item");
+                suggestion.onclick = function() {displayData(musics[i]['name'], musics[i]['artist'], (i+1));};
+                text = document.createElement("p");
+                text.innerHTML = musics[i]['name'] + " - " + musics[i]['artist'];
+                suggestion.appendChild(text);
+                element("search-results").appendChild(suggestion);
+
             }
             if ((musics[i]['name'] + " " + musics[i]['artist']).toLowerCase().includes(search.toLowerCase()) && search != "" && search != " ")
                 //saves all the realated names
