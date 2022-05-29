@@ -4361,6 +4361,194 @@ function getMusics() {
             name:"Let It Go",
             artist:"Demi Lovato"
         },
-
+        {
+            id:624,
+            genre:"Light Music",
+            src:"music/huangchuanzhiyue_wangxiang.mp3",
+            name:"荒川之月",
+            artist:"忘乡"
+        },
+        {
+            id:625,
+            genre:"Light Music",
+            src:"music/imissyou_thedaydream.mp3",
+            name:"I Miss You",
+            artist:"The Daydream"
+        },
+        {
+            id:626,
+            genre:"Light Music",
+            src:"music/atlantis_cliffordwhite.mp3",
+            name:"Atlantis",
+            artist:"Clifford White"
+        },
+        {
+            id:627,
+            genre:"Light Music",
+            src:"music/thehealingtouch_cliffordwhite.mp3",
+            name:"The Healing Touch",
+            artist:"Clifford White"
+        },
+        {
+            id:628,
+            genre:"Light Music",
+            src:"music/sanctuary_cliffordwhite.mp3",
+            name:"Sanctuary",
+            artist:"Clifford White"
+        },
+        {
+            id:629,
+            genre:"Light Music",
+            src:"music/reawakening_cliffordwhite.mp3",
+            name:"Reawakening",
+            artist:"Clifford White"
+        },
+        {
+            id:630,
+            genre:"Light Music",
+            src:"music/divination_cliffordwhite.mp3",
+            name:"Divination",
+            artist:"Clifford White"
+        },
+        {
+            id:631,
+            genre:"Light Music",
+            src:"music/equatorial_cliffordwhite.mp3",
+            name:"Equatorial",
+            artist:"Clifford White"
+        },
+        {
+            id:632,
+            genre:"Light Music",
+            src:"music/catacombs_cliffordwhite.mp3",
+            name:"Catacombs",
+            artist:"Clifford White"
+        },
+        {
+            id:633,
+            genre:"Light Music",
+            src:"music/timetunnels_cliffordwhite.mp3",
+            name:"Time Tunnels",
+            artist:"Clifford White"
+        },
+        {
+            id:634,
+            genre:"Light Music",
+            src:"music/followyourheart_karunesh.mp3",
+            name:"Follow Your Heart",
+            artist:"Karunesh"
+        },
+        {
+            id:635,
+            genre:"Light Music",
+            src:"music/layersoftranquility_karunesh.mp3",
+            name:"Layers Of Tranquility",
+            artist:"Karunesh"
+        },
+        {
+            id:636,
+            genre:"Light Music",
+            src:"music/theconversation_karunesh.mp3",
+            name:"The Conversation",
+            artist:"Karunesh"
+        },
+        {
+            id:637,
+            genre:"Light Music",
+            src:"music/taoandzen_karunesh.mp3",
+            name:"Tao And Zen",
+            artist:"Karunesh"
+        },
+        {
+            id:638,
+            genre:"Chinese Pop",
+            src:"music/tianshidechibang_xuyuteng.mp3",
+            name:"天使的翅膀",
+            artist:"徐誉滕"
+        },
+        {
+            id:639,
+            genre:"Chinese Ancientry",
+            src:"music/chiling_tanjing.mp3",
+            name:"赤伶",
+            artist:"谭晶"
+        },
+        {
+            id:640,
+            genre:"Chinese Pop",
+            src:"music/xiangfengyiyang_shanyichun.mp3",
+            name:"像风一样",
+            artist:"单依纯"
+        },
+        {
+            id:641,
+            genre:"Chinese Pop",
+            src:"music/ruyuan_wangfei.mp3",
+            name:"如愿",
+            artist:"王菲"
+        },
+        {
+            id:642,
+            genre:"Epic",
+            src:"music/fight_beatbrothers.mp3",
+            name:"Fight",
+            artist:"BeatBrothers"
+        },
+        {
+            id:643,
+            genre:"Electronic",
+            src:"music/ignite_alanwalker.mp3",
+            name:"Ignite",
+            artist:"Alan Walker"
+        },
+        {
+            id:644,
+            genre:"Japanese Pop",
+            src:"music/zhanfangyudadidexuanlv_youbixingguang.mp3",
+            name:"大地に咲く旋律 (绽放于大地的旋律)",
+            artist:"幽闭星光 & 森永真由美"
+        },
+        {
+            id:645,
+            genre:"Japanese Pop",
+            src:"music/fensanfensantianchong_ling.mp3",
+            name:"散る散る満ちる 分散，分散，填充",
+            artist:"伶 (鷲尾伶菜)"
+        },
+        {
+            id:646,
+            genre:"Japanese Pop",
+            src:"music/qiyuedepengyou_xiongmuxingli.mp3",
+            name:"七月の友だち (七月的朋友)",
+            artist:"熊木杏里"
+        },
+        {
+            id:647,
+            genre:"Japanese Pop",
+            src:"music/xinzhisuoxiang_xiongmuxingli.mp3",
+            name:"心のまま (心之所向)",
+            artist:"熊木杏里"
+        },
+        {
+            id:648,
+            genre:"Western Pop",
+            src:"music/amomentlikethis_leonalewis.mp3",
+            name:"A Moment Like This",
+            artist:"Leona Lewis"
+        },
+        {
+            id:649,
+            genre:"Chinese Pop",
+            src:"music/yurendeguodu_sunyanzi.mp3",
+            name:"愚人的国度",
+            artist:"孙燕姿"
+        },
+        {
+            id:650,
+            genre:"Chinese Pop",
+            src:"music/weiliao_wuqingfeng.mp3",
+            name:"未了",
+            artist:"吴青峰"
+        },
     ]
 }
