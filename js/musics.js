@@ -19,7 +19,7 @@ function getMusics() {
             genre:"Japanese Pop",
             src:"music/qingniao_wanwuguzhang.mp3",
             name:"青鸟",
-            artist:"万物股长"
+            artist:"生物股长"
         },
         {
             id:4,
