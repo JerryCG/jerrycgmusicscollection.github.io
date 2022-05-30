@@ -585,7 +585,7 @@ function getMusics() {
             id:84,
             genre:"Light Music",
             src:"music/fengjuzhudejiedao_jicunyoujizi.mp3",
-            name:"風の住む街",
+            name:"風の住む街 (风居住的街道)",
             artist:"矶村由纪子"
         },
         {
@@ -4549,6 +4549,13 @@ function getMusics() {
             src:"music/weiliao_wuqingfeng.mp3",
             name:"未了",
             artist:"吴青峰"
+        },
+        {
+            id:651,
+            genre:"Light Music",
+            src:"music/yinghuashengkai_jicunyoujizi.mp3",
+            name:"サクラ (樱花盛开)",
+            artist:"矶村由纪子"
         },
     ]
 }
