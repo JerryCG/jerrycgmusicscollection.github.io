@@ -3894,10 +3894,10 @@ function getMusics() {
         },
         {
             id:557,
-            genre:"Chinese Pop",
-            src:"music/vincent_dulisha.mp3",
-            name:"Vincent",
-            artist:"杜丽莎"
+            genre:"Light Music",
+            src:"music/aimadebeishang.mp3",
+            name:"エマの悲しみ 艾玛的悲伤",
+            artist:"小畑貴裕 (おばた たかひろ)"
         },
         {
             id:558,
