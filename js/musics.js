@@ -4557,5 +4557,19 @@ function getMusics() {
             name:"サクラ (樱花盛开)",
             artist:"矶村由纪子"
         },
+        {
+            id:652,
+            genre:"Light Music",
+            src:"music/xiayeliuying_sanmuyu.mp3",
+            name:"夏夜流萤",
+            artist:"三暮雨"
+        },
+        {
+            id:653,
+            genre:"Light Music",
+            src:"music/yedegangqinqu_dylanf.mp3",
+            name:"夜的钢琴曲",
+            artist:"dylanf"
+        },
     ]
 }
