@@ -4571,5 +4571,40 @@ function getMusics() {
             name:"夜的钢琴曲",
             artist:"dylanf"
         },
+        {
+            id:654,
+            genre:"Light Music",
+            src:"music/yanhualuo_darkspirit.mp3",
+            name:"烟花落",
+            artist:"DarkSpirit"
+        },
+        {
+            id:655,
+            genre:"Western Pop",
+            src:"music/whencaniseeyouagain_owlcity.mp3",
+            name:"When Can I See You Again?",
+            artist:"Owl City"
+        },
+        {
+            id:656,
+            genre:"Chinese Ancientry",
+            src:"music/fengqitianlan_hetu.mp3",
+            name:"风起天阑",
+            artist:"河图"
+        },
+        {
+            id:657,
+            genre:"Light Music",
+            src:"music/ourfuture_pederbhelland.mp3",
+            name:"Our Future",
+            artist:"Peder B. Helland"
+        },
+        {
+            id:658,
+            genre:"Electronic",
+            src:"music/moveyourbody_siaalanwalker.mp3",
+            name:"Move Your Body",
+            artist:"Sia & Alan Walker"
+        },
     ]
 }
