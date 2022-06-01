@@ -4606,5 +4606,19 @@ function getMusics() {
             name:"Move Your Body",
             artist:"Sia & Alan Walker"
         },
+        {
+            id:659,
+            genre:"Light Music",
+            src:"music/bianzaolishideren_mamomo.mp3",
+            name:"歴史を紡ぐ者 (编造历史的人)",
+            artist:"mamomo (まももP)"
+        },
+        {
+            id:660,
+            genre:"Light Music",
+            src:"music/lotusflower_pederbhelland.mp3",
+            name:"Lotus Flower",
+            artist:"Peder B. Helland"
+        },
     ]
 }
