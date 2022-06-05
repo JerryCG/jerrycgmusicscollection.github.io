@@ -4620,5 +4620,54 @@ function getMusics() {
             name:"Lotus Flower",
             artist:"Peder B. Helland"
         },
+        {
+            id:661,
+            genre:"Light Music",
+            src:"music/xinghefumeng_catchqiu.mp3",
+            name:"星河赴梦",
+            artist:"Catch丶秋"
+        },
+        {
+            id:662,
+            genre:"Light Music",
+            src:"music/together_pederbhelland.mp3",
+            name:"Together",
+            artist:"Peder B. Helland"
+        },
+        {
+            id:663,
+            genre:"Light Music",
+            src:"music/springafterrain_sanmuyu.mp3",
+            name:"Spring After Rain",
+            artist:"三暮雨"
+        },
+        {
+            id:664,
+            genre:"Electronic",
+            src:"music/lonelyworld_k391.mp3",
+            name:"Lonely World",
+            artist:"K-391 & Victor Crone"
+        },
+        {
+            id:665,
+            genre:"Light Music",
+            src:"music/earthspirit_karunesh.mp3",
+            name:"Earth Spirit",
+            artist:"Karunesh"
+        },
+        {
+            id:666,
+            genre:"Light Music",
+            src:"music/liuyingzhisen_namibia.mp3",
+            name:"流萤之森",
+            artist:"Namibia"
+        },
+        {
+            id:667,
+            genre:"Light Music",
+            src:"music/wanfeng_mengjianshaonian.mp3",
+            name:"晚风",
+            artist:"梦见少年"
+        },
     ]
 }
