@@ -4669,5 +4669,61 @@ function getMusics() {
             name:"晚风",
             artist:"梦见少年"
         },
+        {
+            id:668,
+            genre:"Light Music",
+            src:"music/anewday_pederbhelland.mp3",
+            name:"A New Day",
+            artist:"Peder B. Helland"
+        },
+        {
+            id:669,
+            genre:"Light Music",
+            src:"music/always_pederbhelland.mp3",
+            name:"Always",
+            artist:"Peder B. Helland"
+        },
+        {
+            id:670,
+            genre:"Light Music",
+            src:"music/ourjourney_pederbhelland.mp3",
+            name:"Our Journey",
+            artist:"Peder B. Helland"
+        },
+        {
+            id:671,
+            genre:"Light Music",
+            src:"music/rosepetals_pederbhelland.mp3",
+            name:"Rose Petals",
+            artist:"Peder B. Helland"
+        },
+        {
+            id:672,
+            genre:"Light Music",
+            src:"music/bedtimelullaby_pederbhelland.mp3",
+            name:"Bedtime Lullaby",
+            artist:"Peder B. Helland"
+        },
+        {
+            id:673,
+            genre:"Light Music",
+            src:"music/alongtimeago_pederbhelland.mp3",
+            name:"A Long Time Ago",
+            artist:"Peder B. Helland"
+        },
+        {
+            id:674,
+            genre:"Light Music",
+            src:"music/iwillremember_pederbhelland.mp3",
+            name:"I Will Remember",
+            artist:"Peder B. Helland"
+        },
+        {
+            id:675,
+            genre:"Light Music",
+            src:"music/brightfuture_pederbhelland.mp3",
+            name:"Bright Future",
+            artist:"Peder B. Helland"
+        },
     ]
 }
