@@ -4725,5 +4725,40 @@ function getMusics() {
             name:"Bright Future",
             artist:"Peder B. Helland"
         },
+        {
+            id:676,
+            genre:"Light Music",
+            src:"music/huadeshijie_revo.mp3",
+            name:"花が散る世界 花的世界",
+            artist:"Revo (レヴォ)"
+        },
+        {
+            id:677,
+            genre:"Light Music",
+            src:"music/bushido_peterroe.mp3",
+            name:"Boshido",
+            artist:"Peter Roe & Uyanga Bold"
+        },
+        {
+            id:678,
+            genre:"Electronic",
+            src:"music/lanturns_xomu.mp3",
+            name:"Lanturns",
+            artist:"Xomu"
+        },
+        {
+            id:679,
+            genre:"Epic",
+            src:"music/icarus_ivan.mp3",
+            name:"Icarus",
+            artist:"Ivan Torrent & Julie Elven"
+        },
+        {
+            id:680,
+            genre:"Japanese Pop",
+            src:"music/jinriruwangxi_xiongmuxingli.mp3",
+            name:"今は昔 (今日如往昔)",
+            artist:"熊木杏里"
+        },
     ]
 }
