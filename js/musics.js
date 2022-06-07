@@ -4760,5 +4760,26 @@ function getMusics() {
             name:"今は昔 (今日如往昔)",
             artist:"熊木杏里"
         },
+        {
+            id:681,
+            genre:"Light Music",
+            src:"music/yewanyanhuoshanshuodeshihou_yuzhong.mp3",
+            name:"花火が瞬く夜に 夜晚烟火闪烁的时候",
+            artist:"羽肿"
+        },
+        {
+            id:682,
+            genre:"Epic",
+            src:"music/lastreunion_peterroe.mp3",
+            name:"Last Reunion",
+            artist:"Peter Roe"
+        },
+        {
+            id:683,
+            genre:"Light Music",
+            src:"music/simplybe_myristica.mp3",
+            name:"Simply Be",
+            artist:"Myristica"
+        },
     ]
 }

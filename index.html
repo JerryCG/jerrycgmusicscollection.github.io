@@ -43,10 +43,23 @@
             font-family: Goudy Old Style;
             border-width: 2px;
             font-weight: bold;
-            width: 80px;
+            width: 75px;
             height: 45px;
+            font-size: 16;
+        }
+
+        #click-to-play-button {
+            border-radius: 50px;
+            background-color: gold;
+            border-color: white;
+            font-family: Goudy Old Style;
+            border-width: 2px;
+            font-weight: bold;
+            width: 75px;
+            height: 55px;
             font-size: 18;
         }
+
         select, input {
             border-radius: 50px;
             border-color: gold;
@@ -57,9 +70,9 @@
         }
 
         #buttons {
-            column-count: 3;
+            column-count: 4;
             column-gap: 20px;
-            max-width: 235;
+            max-width: 300;
         }
         #title, #search-title{
             color: gold;
@@ -135,29 +148,56 @@
             changeMusicURL(unplayedIDs[randomIndex]);
         }
 
-        function loopPlay(musicArray) {
-            //current playing not last in the musicArray
-            if (musicArray[musicArray.length-1]["id"] != document.getElementById("musicplaying").name){
-                var index = musicArray.length;
-                for (var i = 0; i < musicArray.length; i++){
-                    if (musicArray[i]["id"] == document.getElementById("musicplaying").name){
-                        index = i+1;
-                        break;
+        function loopPlay(musicArray, reverse) {
+            if (reverse) {
+                //current playing not first in the musicArray
+                if (musicArray[0]["id"] != document.getElementById("musicplaying").name){
+                    var index = musicArray.length;
+                    for (var i = 0; i < musicArray.length; i++){
+                        if (musicArray[i]["id"] == document.getElementById("musicplaying").name){
+                            index = i-1;
+                            break;
+                        }
+                    }
+                    //currently playing song is not in the musicArray
+                    if (index == musicArray.length){
+                        changeMusicURL(musicArray[musicArray.length-1]["id"]);
+                    }
+                    //get the currently playing song's index in the musicArray
+                    else{
+                        changeMusicURL(musicArray[index]["id"]);
                     }
                 }
-                //currently playing song is not in the musicArray
-                if (index == musicArray.length){
+                //current playing is first in the musicArray
+                else {
+                    changeMusicURL(musicArray[musicArray.length-1]["id"]);
+                }
+            }
+            else {
+                //current playing not last in the musicArray
+                if (musicArray[musicArray.length-1]["id"] != document.getElementById("musicplaying").name){
+                    var index = musicArray.length;
+                    for (var i = 0; i < musicArray.length; i++){
+                        if (musicArray[i]["id"] == document.getElementById("musicplaying").name){
+                            index = i+1;
+                            break;
+                        }
+                    }
+                    //currently playing song is not in the musicArray
+                    if (index == musicArray.length){
+                        changeMusicURL(musicArray[0]["id"]);
+                    }
+                    //get the currently playing song's index in the musicArray
+                    else{
+                        changeMusicURL(musicArray[index]["id"]);
+                    }
+                }
+                //current playing is last in the musicArray
+                else {
                     changeMusicURL(musicArray[0]["id"]);
                 }
-                //get the currently playing song's index in the musicArray
-                else{
-                    changeMusicURL(musicArray[index]["id"]);
-                }
             }
-            //current playing is last in the musicArray
-            else {
-                changeMusicURL(musicArray[0]["id"]);
-            }
+
         }
 
         function changeModeText(){
@@ -180,14 +220,16 @@
             if (modeButton.innerHTML == "Random"){
                 modeButton.innerHTML = "Loop";
                 document.getElementById("current-play-mode").innerHTML = document.getElementById("current-play-mode").innerHTML.split(",")[0] + ", Loop Playing";
-                musicPlayer.onended = function() {loopPlay(selectedMusics);};
-                nextSongButton.onclick = function() {loopPlay(selectedMusics);};
+                musicPlayer.onended = function() {loopPlay(selectedMusics, 0);};
+                nextSongButton.onclick = function() {loopPlay(selectedMusics, 0);};
+                previousSongButton.onclick = function() {loopPlay(selectedMusics, 1);};
             }
             else {
                 modeButton.innerHTML = "Random";
                 document.getElementById("current-play-mode").innerHTML = document.getElementById("current-play-mode").innerHTML.split(",")[0] + ", Random Playing";
                 musicPlayer.onended = function() {randomPlay(selectedMusics);};
                 nextSongButton.onclick = function() {randomPlay(selectedMusics);};
+                previousSongButton.onclick = function() {randomPlay(selectedMusics);};
             }
         }
 
@@ -207,12 +249,14 @@
                     changeMusicURL(idSelected[Math.floor(Math.random() * idSelected.length)]); 
                     musicPlayer.onended = function() {randomPlay(selectedMusics);};
                     nextSongButton.onclick = function() {randomPlay(selectedMusics);};
+                    previousSongButton.onclick = function() {randomPlay(selectedMusics);};
                 }
                 else{
                     modeButton.innerHTML = "Loop";
                     changeMusicURL(idSelected[0]); 
-                    musicPlayer.onended = function() {loopPlay(selectedMusics);};
-                    nextSongButton.onclick = function() {loopPlay(selectedMusics);};
+                    musicPlayer.onended = function() {loopPlay(selectedMusics, 0);};
+                    nextSongButton.onclick = function() {loopPlay(selectedMusics, 0);};
+                    previousSongButton.onclick = function() {loopPlay(selectedMusics, 1);};
                 }
                 changeModeText();
             }
@@ -381,7 +425,7 @@
 
         for (let i = 0; i < musics.length; i++) {
             //checks for similarities
-            if ((musics[i]['name'] + " " + musics[i]['artist']).toLowerCase().includes(search.toLowerCase()) && search != "" && search != " ") {
+            if ((musics[i]['name'] + " " + musics[i]['artist']).toLowerCase().includes(search.toLowerCase()) && search != "" && search != " " && search != "  ") {
                 //populates the suggestion div
                 var suggestion = document.createElement("div");
                 suggestion.setAttribute("class", "search-item");
@@ -392,7 +436,7 @@
                 element("search-results").appendChild(suggestion);
 
             }
-            if ((musics[i]['name'] + " " + musics[i]['artist']).toLowerCase().includes(search.toLowerCase()) && search != "" && search != " ")
+            if ((musics[i]['name'] + " " + musics[i]['artist']).toLowerCase().includes(search.toLowerCase()) && search != "" && search != " " && search != "  ")
                 //saves all the related names
                 allSearchData += "<p>" + musics[i]['name'] + " - " + musics[i]['artist'] + "</p>";
         }
@@ -453,6 +497,7 @@
             <br>
             <div id="buttons">
                 <div id="replayButtonPosition"></div>
+                <div id="previousSongButtonPosition"></div>
                 <div id="nextSongButtonPosition"></div>
                 <div id="changeModeButtonPosition"></div>
             </div>
@@ -481,6 +526,15 @@
         replayButton.setAttribute("id", "replay-button");
         var replayButtonPosition = document.getElementById("replayButtonPosition");
         replayButtonPosition.appendChild(replayButton);
+
+        // create previous song button
+        var previousSongButton = document.createElement("button");
+        previousSongButton.setAttribute("type", "button");
+        previousSongButton.setAttribute("onclick", "randomPlay(musics);");
+        previousSongButton.innerHTML = "Previous";
+        previousSongButton.setAttribute("id", "next-song-button");
+        var previousSongButtonPosition = document.getElementById("previousSongButtonPosition");
+        previousSongButtonPosition.appendChild(previousSongButton);
 
         // create next song button
         var nextSongButton = document.createElement("button");
