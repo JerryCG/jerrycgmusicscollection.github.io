@@ -4781,5 +4781,26 @@ function getMusics() {
             name:"Simply Be",
             artist:"Myristica"
         },
+        {
+            id:684,
+            genre:"Light Music",
+            src:"music/gongbingwenku_songguzhuo.mp3",
+            name:"共病文库",
+            artist:"松谷卓 (まつたに すぐる)"
+        },
+        {
+            id:685,
+            genre:"Light Music",
+            src:"music/seaside_yuzhong.mp3",
+            name:"Seaside",
+            artist:"羽肿"
+        },
+        {
+            id:686,
+            genre:"Light Music",
+            src:"music/liangrendelvtu_jiyuliang.mp3",
+            name:"二人の旅(「ソマリと森の神様」メインテーマⅠ) (二人之旅)",
+            artist:"吉俣良 (よしまた りょう)"
+        },
     ]
 }
