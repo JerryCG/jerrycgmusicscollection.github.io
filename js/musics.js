@@ -4802,5 +4802,26 @@ function getMusics() {
             name:"二人の旅(「ソマリと森の神様」メインテーマⅠ) (二人之旅)",
             artist:"吉俣良 (よしまた りょう)"
         },
+        {
+            id:687,
+            genre:"Japanese Pop",
+            src:"music/zhenhunge_suzuhayumi.mp3",
+            name:"ルクティアの鎮魂歌",
+            artist:"鈴葉ユミ (suzuhayumi)"
+        },
+        {
+            id:688,
+            genre:"Light Music",
+            src:"music/goldenlight_pederbhelland.mp3",
+            name:"Golden Light",
+            artist:"Peder B. Helland"
+        },
+        {
+            id:689,
+            genre:"Light Music",
+            src:"music/moony_yuzhong.mp3",
+            name:"Moony",
+            artist:"羽肿"
+        },
     ]
 }
