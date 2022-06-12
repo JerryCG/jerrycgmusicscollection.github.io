@@ -4823,5 +4823,33 @@ function getMusics() {
             name:"Moony",
             artist:"羽肿"
         },
+        {
+            id:690,
+            genre:"Light Music",
+            src:"music/nothingislacking_parijat.mp3",
+            name:"Nothing Is Lacking",
+            artist:"Parijat"
+        },
+        {
+            id:691,
+            genre:"Light Music",
+            src:"music/shootingstar_littleend.mp3",
+            name:"Shooting Star",
+            artist:"Little End"
+        },
+        {
+            id:692,
+            genre:"Epic",
+            src:"music/erxiangbojiangweidaji_zhuqianliang.mp3",
+            name:"二向箔降维打击",
+            artist:"祝乾亮"
+        },
+        {
+            id:693,
+            genre:"Light Music",
+            src:"music/doyou_mayrain.mp3",
+            name:"Do You",
+            artist:"Mayrain"
+        },
     ]
 }
