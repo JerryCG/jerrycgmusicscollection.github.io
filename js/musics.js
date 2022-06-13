@@ -4851,5 +4851,54 @@ function getMusics() {
             name:"Do You",
             artist:"Mayrain"
         },
+        {
+            id:694,
+            genre:"Light Music",
+            src:"music/niyongbiyanzouzhegeshijie_songbenwenji.mp3",
+            name:"君の筆は世界を奏でる 你用笔演奏这个世界",
+            artist:"松本文紀 (まつもと ふみのり)"
+        },
+        {
+            id:695,
+            genre:"Light Music",
+            src:"music/fengzhuchenxiang_liubuer.mp3",
+            name:"风住尘香",
+            artist:"柳不贰"
+        },
+        {
+            id:696,
+            genre:"Japanese Pop",
+            src:"music/chengweixindeziji_xiongmuxingli.mp3",
+            name:"新しい私になって 成为新的自己",
+            artist:"熊木杏里"
+        },
+        {
+            id:697,
+            genre:"Chinese Pop",
+            src:"music/guangzhiliming_huangxiaoyun.mp3",
+            name:"光之黎明",
+            artist:"黄霄云"
+        },
+        {
+            id:698,
+            genre:"Epic",
+            src:"music/qishiwangderongyao_chuanjingxianci.mp3",
+            name:"騎士王の誇り 骑士王的荣耀",
+            artist:"川井宪次 (かわい けんじ)"
+        },
+        {
+            id:699,
+            genre:"Light Music",
+            src:"music/fengzhongyouyin_wangxiang.mp3",
+            name:"风中有音",
+            artist:"忘乡"
+        },
+        {
+            id:700,
+            genre:"Light Music",
+            src:"music/missyou_mayrain.mp3",
+            name:"Miss You",
+            artist:"Mayrain"
+        },
     ]
 }
