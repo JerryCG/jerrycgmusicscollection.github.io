@@ -4900,5 +4900,26 @@ function getMusics() {
             name:"Miss You",
             artist:"Mayrain"
         },
+        {
+            id:701,
+            genre:"Japanese Pop",
+            src:"music/zhongbai_uru.mp3",
+            name:"振り子 钟摆",
+            artist:"Uru"
+        },
+        {
+            id:702,
+            genre:"Electronic",
+            src:"music/betterplace_peterroe.mp3",
+            name:"Better Place",
+            artist:"Peter Roe"
+        },
+        {
+            id:703,
+            genre:"Light Music",
+            src:"music/huakaiyoushi_wangxiang.mp3",
+            name:"花开有时",
+            artist:"忘乡"
+        },
     ]
 }
