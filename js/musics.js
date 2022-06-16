@@ -4921,5 +4921,26 @@ function getMusics() {
             name:"花开有时",
             artist:"忘乡"
         },
+        {
+            id:704,
+            genre:"Light Music",
+            src:"music/rainaftersummer_yuzhong.mp3",
+            name:"Rain After Summer",
+            artist:"羽肿"
+        },
+        {
+            id:705,
+            genre:"Light Music",
+            src:"music/aizijishizhongshenlangmandekaishi_awenjiang.mp3",
+            name:"爱自己是终身浪漫的开始",
+            artist:"阿文酱"
+        },
+        {
+            id:706,
+            genre:"Epic",
+            src:"music/yinhejiyuan_bocaisheng.mp3",
+            name:"银河纪元",
+            artist:"薄彩生"
+        },
     ]
 }
